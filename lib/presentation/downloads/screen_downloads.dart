@@ -88,17 +88,19 @@ class Downloads extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: MaterialButton(
+              height: 45,
               onPressed: () {},
-              color: Colors.blue,
+              color: Colors.blueAccent[700],
               child: const Text(
                 "Set Up",
-                style: TextStyle(color: kDefaultIconLightColor, fontSize: 26),
+                style: TextStyle(color: kDefaultIconLightColor, fontSize: 20),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 4),
             child: MaterialButton(
+              height: 45,
               onPressed: () {},
               color: kDefaultIconLightColor,
               child: const Text(
