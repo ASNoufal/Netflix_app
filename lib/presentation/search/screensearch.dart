@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/presentation/search/idealpage.dart';
-import 'package:netflix/presentation/search/widget/realpage.dart';
+import 'package:netflix/presentation/search/realpage.dart';
 
 class ScreenSearch extends StatelessWidget {
   const ScreenSearch({super.key});

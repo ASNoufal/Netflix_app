@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix/presentation/mainpage/widgets/Maintitletest.dart';
 
 const image =
     "https://www.themoviedb.org/t/p/w250_and_h141_face/9ZlGiEKmcYrrxmiQEJDhjeT2kEW.jpg";
@@ -15,11 +16,7 @@ class Idealpage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Top Searches",
-            style: GoogleFonts.montserrat(
-                fontSize: 30, fontWeight: FontWeight.w700),
-          ),
+          const maintexttitle(test: "Top Search"),
           Expanded(
             child: ListView.separated(
                 itemBuilder: (context, index) {

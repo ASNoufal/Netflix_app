@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix/presentation/downloads/screen_downloads.dart';
-import 'package:netflix/presentation/search/idealpage.dart';
 
 class Fastlaugh extends StatelessWidget {
   const Fastlaugh({super.key});
