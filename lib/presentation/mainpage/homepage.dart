@@ -1,7 +1,11 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/rendering.dart';
+import 'package:netflix/presentation/mainpage/widgets/Mainpagefirstsection.dart';
 import 'package:netflix/presentation/mainpage/widgets/Maintitletest.dart';
+import 'package:netflix/widgets/appbar_.dart';
+
+ValueNotifier valueNotifier = ValueNotifier(true);
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,105 +13,104 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 650,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                          "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/kSf9svfL2WrKeuK8W08xeR5lTn8.jpg"),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 10,
-                  left: 10,
-                  bottom: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+      child: ValueListenableBuilder(
+          valueListenable: valueNotifier,
+          builder: (context, value, _) {
+            return NotificationListener<UserScrollNotification>(
+              onNotification: (notification) {
+                final ScrollDirection direction = notification.direction;
+                print(direction);
+                if (direction == ScrollDirection.reverse) {
+                  valueNotifier.value = false;
+                } else if (direction == ScrollDirection.forward) {
+                  valueNotifier.value = true;
+                }
+                return true;
+              },
+              child: Stack(
+                children: [
+                  ListView(
                     children: [
+                      const Mainpagefirstsection(),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      const MainPagesetup(
+                        test: "TV -Dramas",
+                      ),
+                      const MainPagesetup(test: "Trending now"),
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 40,
-                          ),
-                          Text(
-                            "My List",
-                            style: GoogleFonts.montserrat(fontSize: 18),
+                          const maintexttitle(test: "Top 10"),
+                          LimitedBox(
+                            maxHeight: 200,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: List.generate(
+                                  10,
+                                  (index) => Topten(
+                                        index: index,
+                                      )),
+                            ),
                           )
                         ],
                       ),
-                      ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.play_arrow,
-                          color: Colors.black,
-                          size: 30,
-                        ),
-                        label: Text(
-                          "Play",
-                          style: GoogleFonts.montserrat(
-                              color: Colors.black, fontSize: 18),
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          Icon(
-                            Icons.info,
-                            color: Colors.white,
-                            size: 40,
-                          ),
-                          Text(
-                            "Info",
-                            style: GoogleFonts.montserrat(fontSize: 18),
-                          )
-                        ],
-                      )
+                      const MainPagesetup(test: "Top picks")
                     ],
                   ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const MainPagesetup(
-              test: "TV -Dramas",
-            ),
-            const MainPagesetup(test: "Trending now"),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const maintexttitle(test: "Top 10"),
-                LimitedBox(
-                  maxHeight: 200,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: List.generate(
-                        10,
-                        (index) => Topten(
-                              index: index,
-                            )),
-                  ),
-                )
-              ],
-            ),
-            const MainPagesetup(test: "Top picks")
-          ],
-        ),
-      ),
+                  valueNotifier.value
+                      ? AnimatedContainer(
+                          duration: const Duration(milliseconds: 1000),
+                          height: 120,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.5),
+                          ),
+                          child: const Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                    ),
+                                    child: CircleAvatar(
+                                      radius: 30,
+                                      backgroundImage: NetworkImage(
+                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP0pTHA8VVWihO6CtPWTTNgPBlQGsQJtySkafuSi1Jd1Pap6t6cwkeQXc_jLIZe2a5VWc&usqp=CAU"),
+                                    ),
+                                  ),
+                                  Expanded(child: AppbarWidget()),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    "Tv Shows",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text("Movies",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                  Text("Categories",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold))
+                                ],
+                              )
+                            ],
+                          ),
+                        )
+                      : const SizedBox()
+                ],
+              ),
+            );
+          }),
     );
   }
 }
