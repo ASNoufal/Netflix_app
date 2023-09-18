@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix/presentation/news%20&%20hot/widget/CommingSoontitle.dart';
 
 class NewsandHot extends StatelessWidget {
   const NewsandHot({super.key});
@@ -32,6 +34,8 @@ class NewsandHot extends StatelessWidget {
             ),
           ],
           bottom: const TabBar(
+              indicatorWeight: 2,
+              isScrollable: true,
               indicatorSize: TabBarIndicatorSize.tab,
               indicatorColor: Colors.black,
               automaticIndicatorColorAdjustment: false,
@@ -47,19 +51,18 @@ class NewsandHot extends StatelessWidget {
                 Tab(text: "👀 Everyone's Watching")
               ]),
         ),
-        body: TabBarView(children: [commingSoon(), everyoneWatching()]),
+        body: TabBarView(children: [commingSoon(context), Everyonewatching()]),
       ),
     );
   }
 }
 
-everyoneWatching() {
-  return Container(
-    child: Text("Every one waching"),
-  );
+Widget commingSoon(BuildContext context) {
+  return ListView.builder(
+      itemCount: 10, itemBuilder: ((context, index) => CommingSoonTitle()));
 }
 
-commingSoon() {
+Widget Everyonewatching() {
   return Container(
     child: Text("comming soon"),
   );
