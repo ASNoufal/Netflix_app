@@ -36,7 +36,8 @@ class CommingSoonTitle extends StatelessWidget {
                 right: 10,
                 bottom: 10,
                 child: CircleAvatar(
-                  backgroundColor: Colors.grey[350],
+                  radius: 30,
+                  backgroundColor: Colors.black.withOpacity(.50),
                   child: const Icon(
                     Icons.volume_off,
                     size: 30,
