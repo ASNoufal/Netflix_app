@@ -20,27 +20,44 @@ class EveryonewatchingTitle extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        Container(
-            width: double.infinity,
-            height: 200,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                        "https://www.themoviedb.org/t/p/w250_and_h141_face/9t0tJXcOdWwwxmGTk112HGDaT0Q.jpg")))),
+        Stack(
+          children: [
+            Container(
+                width: double.infinity,
+                height: 200,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                            "https://www.themoviedb.org/t/p/w250_and_h141_face/9t0tJXcOdWwwxmGTk112HGDaT0Q.jpg")))),
+            Positioned(
+              right: 10,
+              bottom: 10,
+              child: CircleAvatar(
+                radius: 30,
+                backgroundColor: Colors.black.withOpacity(.50),
+                child: const Icon(
+                  Icons.volume_off,
+                  size: 30,
+                  color: Colors.white,
+                ),
+              ),
+            )
+          ],
+        ),
         Row(
           children: [
             Spacer(),
-            Iconswithname("share", Icons.share),
-            Iconswithname("Add", Icons.add),
-            Iconswithname("Play", Icons.play_arrow)
+            iconswithname("share", Icons.share),
+            iconswithname("Add", Icons.add),
+            iconswithname("Play", Icons.play_arrow)
           ],
         )
       ],
     );
   }
 
-  Widget Iconswithname(String title, IconData icons) {
+  Widget iconswithname(String title, IconData icons) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -52,7 +69,7 @@ class EveryonewatchingTitle extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
           )
         ],
       ),
