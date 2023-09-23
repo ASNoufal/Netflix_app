@@ -44,4 +44,4 @@ app.*.map.json
 /android/app/release
 
 # apikey need to safe 
-lib/infrastructure/apikey.dart
+lib/apikey/apikey.dart
