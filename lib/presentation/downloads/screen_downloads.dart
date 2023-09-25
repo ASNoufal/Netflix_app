@@ -1,7 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix/application/downloads/downloads_bloc.dart';
+import 'package:netflix/constant/constant.dart';
 import 'package:netflix/widgets/appbar_.dart';
 
 class Downloads extends StatelessWidget {
@@ -9,6 +12,12 @@ class Downloads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   BlocProvider.of<DownloadsBloc>(context)
+    //       .add(const DownloadsEvent.getdownloadsimage());
+    // });
+    BlocProvider.of<DownloadsBloc>(context)
+        .add(const DownloadsEvent.getdownloadsimage());
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const PreferredSize(
@@ -50,40 +59,77 @@ class Downloads extends StatelessWidget {
             style: GoogleFonts.montserrat(
                 fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                width: size.width,
-                height: size.width,
-                color: Colors.black,
-              ),
-              CircleAvatar(
-                radius: size.width * 0.42,
-                backgroundColor: Colors.grey[900],
-              ),
-              image(
-                  size,
-                  0,
-                  20,
-                  const EdgeInsets.only(
-                    left: 190,
-                    bottom: 70,
-                  ),
-                  0.4,
-                  0.58),
-              image(
-                  size,
-                  1,
-                  -20,
-                  const EdgeInsets.only(
-                    right: 200,
-                    bottom: 70,
-                  ),
-                  0.4,
-                  0.58),
-              image(size, 2, 0, const EdgeInsets.only(), 0.48, 0.70)
-            ],
+          BlocBuilder<DownloadsBloc, DownloadsState>(
+            builder: (context, state) {
+              state.isloading ? CircularProgressIndicator() : print("object");
+              print(state);
+              print("---");
+              print(state.downloads[0].posterPath.toString());
+              return SizedBox(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      width: size.width,
+                      height: size.width,
+                      color: Colors.black,
+                    ),
+                    CircleAvatar(
+                      radius: size.width * 0.42,
+                      backgroundColor: Colors.grey[900],
+                    ),
+                    Transform.rotate(
+                      angle: 20 * pi / 180,
+                      child: Container(
+                        margin: const EdgeInsets.only(
+                          left: 190,
+                          bottom: 70,
+                        ),
+                        width: size.width * 0.4,
+                        height: size.width * 0.58,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(30)),
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    "$imageurl${state.downloads[0].posterPath}"))),
+                      ),
+                    ),
+                    Transform.rotate(
+                      angle: -20 * pi / 180,
+                      child: Container(
+                        margin: const EdgeInsets.only(
+                          right: 200,
+                          bottom: 70,
+                        ),
+                        width: size.width * 0.4,
+                        height: size.width * 0.58,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(30)),
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    '$imageurl${state.downloads[1].posterPath}'))),
+                      ),
+                    ),
+                    Transform.rotate(
+                      angle: 0 * pi / 180,
+                      child: Container(
+                        margin: const EdgeInsets.only(),
+                        width: size.width * 0.48,
+                        height: size.width * 0.70,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(30)),
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    "$imageurl${state.downloads[2].posterPath}"))),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -110,21 +156,6 @@ class Downloads extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-
-  Transform image(Size size, int number, int angle, EdgeInsets margin,
-      double width, double height) {
-    return Transform.rotate(
-      angle: angle * pi / 180,
-      child: Container(
-        margin: margin,
-        width: size.width * width,
-        height: size.width * height,
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(30)),
-            image: DecorationImage(image: NetworkImage(photo[number]))),
       ),
     );
   }
