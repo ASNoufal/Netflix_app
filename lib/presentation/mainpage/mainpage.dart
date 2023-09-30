@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
     NewsandHot(),
     Fastlaugh(),
     ScreenSearch(),
-    Downloads()
+    Downloadsscreen()
   ];
   @override
   Widget build(BuildContext context) {

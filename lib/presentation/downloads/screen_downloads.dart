@@ -7,8 +7,8 @@ import 'package:netflix/application/downloads/downloads_bloc.dart';
 import 'package:netflix/constant/constant.dart';
 import 'package:netflix/widgets/appbar_.dart';
 
-class Downloads extends StatelessWidget {
-  const Downloads({super.key});
+class Downloadsscreen extends StatelessWidget {
+  const Downloadsscreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix/application/search/search_bloc.dart';
 import 'package:netflix/presentation/mainpage/widgets/Maintitletest.dart';
 import 'package:netflix/presentation/search/idealpage.dart';
 
@@ -11,6 +13,10 @@ class RealPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // WidgetsBinding.instance!.addPostFrameCallback(_){
+    //   context.read<Searchbloc>()
+    // } ,
+    context.read<SearchBloc>().add(const SearchEvent.initialsearch());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

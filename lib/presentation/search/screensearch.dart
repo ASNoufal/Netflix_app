@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/application/search/search_bloc.dart';
 import 'package:netflix/presentation/search/idealpage.dart';
-import 'package:netflix/presentation/search/realpage.dart';
 
 class ScreenSearch extends StatelessWidget {
   const ScreenSearch({super.key});
@@ -34,7 +35,7 @@ class ScreenSearch extends StatelessWidget {
               ),
             ),
           ),
-          const Expanded(child: RealPage())
+          const Expanded(child: Idealpage())
         ],
       ),
     );

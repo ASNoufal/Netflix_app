@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -16,10 +16,11 @@ class Downloadrepostary implements IDownloadrepo {
       final Response response = await Dio().get(Apiservice.downloads);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
+        print("------");
+        print(response.data.toString());
         final downloadslist = (response.data["results"] as List)
             .map((e) => Downloads.fromJson(e))
             .toList();
-        print(downloadslist);
         return right(downloadslist);
       }
       return const Left(MainFailure.serverfailure());
