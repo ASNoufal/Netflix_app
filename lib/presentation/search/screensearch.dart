@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/application/search/search_bloc.dart';
 import 'package:netflix/presentation/search/idealpage.dart';
+import 'package:netflix/presentation/search/realpage.dart';
 
 class ScreenSearch extends StatelessWidget {
   const ScreenSearch({super.key});
 
   @override
   Widget build(BuildContext context) {
+    context.read<SearchBloc>().add(const SearchEvent.initialsearch());
+
     return SafeArea(
       child: Column(
         children: [
@@ -33,9 +36,21 @@ class ScreenSearch extends StatelessWidget {
                 padding: EdgeInsets.all(8.0),
                 child: Icon(CupertinoIcons.clear_circled, color: Colors.white),
               ),
+              onChanged: (value) {
+                context
+                    .read<SearchBloc>()
+                    .add(SearchEvent.getsearchdata(value));
+              },
             ),
           ),
-          const Expanded(child: Idealpage())
+          Expanded(child: BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              if (state.searchModel.isNotEmpty) {
+                return const RealPage();
+              }
+              return const Idealpage();
+            },
+          ))
         ],
       ),
     );

@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getsearchdata,
+    required TResult Function(String query) getsearchdata,
     required TResult Function() initialsearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getsearchdata,
+    TResult? Function(String query)? getsearchdata,
     TResult? Function()? initialsearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getsearchdata,
+    TResult Function(String query)? getsearchdata,
     TResult Function()? initialsearch,
     required TResult orElse(),
   }) =>
@@ -79,6 +79,8 @@ abstract class _$$GetsearchdataCopyWith<$Res> {
   factory _$$GetsearchdataCopyWith(
           _$Getsearchdata value, $Res Function(_$Getsearchdata) then) =
       __$$GetsearchdataCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
 }
 
 /// @nodoc
@@ -88,54 +90,78 @@ class __$$GetsearchdataCopyWithImpl<$Res>
   __$$GetsearchdataCopyWithImpl(
       _$Getsearchdata _value, $Res Function(_$Getsearchdata) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$Getsearchdata(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$Getsearchdata implements Getsearchdata {
-  const _$Getsearchdata();
+  const _$Getsearchdata(this.query);
+
+  @override
+  final String query;
 
   @override
   String toString() {
-    return 'SearchEvent.getsearchdata()';
+    return 'SearchEvent.getsearchdata(query: $query)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Getsearchdata);
+        (other.runtimeType == runtimeType &&
+            other is _$Getsearchdata &&
+            (identical(other.query, query) || other.query == query));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetsearchdataCopyWith<_$Getsearchdata> get copyWith =>
+      __$$GetsearchdataCopyWithImpl<_$Getsearchdata>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getsearchdata,
+    required TResult Function(String query) getsearchdata,
     required TResult Function() initialsearch,
   }) {
-    return getsearchdata();
+    return getsearchdata(query);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getsearchdata,
+    TResult? Function(String query)? getsearchdata,
     TResult? Function()? initialsearch,
   }) {
-    return getsearchdata?.call();
+    return getsearchdata?.call(query);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getsearchdata,
+    TResult Function(String query)? getsearchdata,
     TResult Function()? initialsearch,
     required TResult orElse(),
   }) {
     if (getsearchdata != null) {
-      return getsearchdata();
+      return getsearchdata(query);
     }
     return orElse();
   }
@@ -173,7 +199,12 @@ class _$Getsearchdata implements Getsearchdata {
 }
 
 abstract class Getsearchdata implements SearchEvent {
-  const factory Getsearchdata() = _$Getsearchdata;
+  const factory Getsearchdata(final String query) = _$Getsearchdata;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$GetsearchdataCopyWith<_$Getsearchdata> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -214,7 +245,7 @@ class _$Initialsearch implements Initialsearch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getsearchdata,
+    required TResult Function(String query) getsearchdata,
     required TResult Function() initialsearch,
   }) {
     return initialsearch();
@@ -223,7 +254,7 @@ class _$Initialsearch implements Initialsearch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getsearchdata,
+    TResult? Function(String query)? getsearchdata,
     TResult? Function()? initialsearch,
   }) {
     return initialsearch?.call();
@@ -232,7 +263,7 @@ class _$Initialsearch implements Initialsearch {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getsearchdata,
+    TResult Function(String query)? getsearchdata,
     TResult Function()? initialsearch,
     required TResult orElse(),
   }) {

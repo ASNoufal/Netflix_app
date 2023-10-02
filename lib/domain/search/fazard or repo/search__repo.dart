@@ -4,5 +4,5 @@ import 'package:netflix/domain/search/searchmodel/model.dart';
 
 abstract class IsearchRepo {
   Future<Either<MainFailure, List<SearchModel>>> searchservice(
-      String searchquery);
+      {required String searchquery});
 }

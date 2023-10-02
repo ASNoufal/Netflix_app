@@ -12,19 +12,25 @@ import 'package:netflix/domain/search/searchmodel/model.dart';
 class Search implements IsearchRepo {
   @override
   Future<Either<MainFailure, List<SearchModel>>> searchservice(
-      String searchquery) async {
+      {required String searchquery}) async {
     try {
       final response = await Dio()
           .get(Apiservice.search, queryParameters: {"query": searchquery});
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        log(response.data);
-        // need some chagnges and look on it
+      print(response.data);
+      print("dkdkdkdkdk");
 
-        return right(response.data);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        // need some chagnges and look on it
+        final searchresult = (response.data['results'] as List)
+            .map((e) => SearchModel.fromJson(e))
+            .toList();
+
+        return right(searchresult);
       } else {
         return left(const MainFailure.serverfailure());
       }
     } catch (e) {
+      print(e.toString());
       return left(const MainFailure.clientfailure());
     }
   }

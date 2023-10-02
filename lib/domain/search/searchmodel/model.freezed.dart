@@ -21,7 +21,7 @@ SearchModel _$SearchModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SearchModel {
   @JsonKey(name: "id")
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "original_title")
   String get orginaltitle => throw _privateConstructorUsedError;
   @JsonKey(name: "poster_path")
@@ -40,7 +40,7 @@ abstract class $SearchModelCopyWith<$Res> {
       _$SearchModelCopyWithImpl<$Res, SearchModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: "id") String id,
+      {@JsonKey(name: "id") int id,
       @JsonKey(name: "original_title") String orginaltitle,
       @JsonKey(name: "poster_path") String posterpath});
 }
@@ -66,7 +66,7 @@ class _$SearchModelCopyWithImpl<$Res, $Val extends SearchModel>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       orginaltitle: null == orginaltitle
           ? _value.orginaltitle
           : orginaltitle // ignore: cast_nullable_to_non_nullable
@@ -88,7 +88,7 @@ abstract class _$$_SearchModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "id") String id,
+      {@JsonKey(name: "id") int id,
       @JsonKey(name: "original_title") String orginaltitle,
       @JsonKey(name: "poster_path") String posterpath});
 }
@@ -112,7 +112,7 @@ class __$$_SearchModelCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       orginaltitle: null == orginaltitle
           ? _value.orginaltitle
           : orginaltitle // ignore: cast_nullable_to_non_nullable
@@ -138,7 +138,7 @@ class _$_SearchModel implements _SearchModel {
 
   @override
   @JsonKey(name: "id")
-  final String id;
+  final int id;
   @override
   @JsonKey(name: "original_title")
   final String orginaltitle;
@@ -183,7 +183,7 @@ class _$_SearchModel implements _SearchModel {
 
 abstract class _SearchModel implements SearchModel {
   const factory _SearchModel(
-          {@JsonKey(name: "id") required final String id,
+          {@JsonKey(name: "id") required final int id,
           @JsonKey(name: "original_title") required final String orginaltitle,
           @JsonKey(name: "poster_path") required final String posterpath}) =
       _$_SearchModel;
@@ -193,7 +193,7 @@ abstract class _SearchModel implements SearchModel {
 
   @override
   @JsonKey(name: "id")
-  String get id;
+  int get id;
   @override
   @JsonKey(name: "original_title")
   String get orginaltitle;

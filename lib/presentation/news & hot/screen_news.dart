@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix/presentation/news%20&%20hot/widget/CommingSoontitle.dart';
 import 'package:netflix/presentation/news%20&%20hot/widget/Everyonewatchingtitle.dart';
 
