@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix/constant/constant.dart';
 import 'package:netflix/domain/downloads/Model/Modeldownload.dart';
 import 'package:netflix/presentation/Fastlaugh/screen_fastlaugh.dart';
+import 'package:video_player/video_player.dart';
 
 class VedioListItemINHERITEDWIDGET extends InheritedWidget {
   const VedioListItemINHERITEDWIDGET(
@@ -32,8 +33,8 @@ class VedioListItems extends StatelessWidget {
         VedioListItemINHERITEDWIDGET.of(context)?.moviedata.posterPath;
     return Stack(
       children: [
-        Container(
-          color: Colors.accents[index],
+        Fastlaughvedioplayer(
+          index: index,
         ),
         Align(
           alignment: Alignment.bottomCenter,
@@ -79,5 +80,49 @@ class VedioListItems extends StatelessWidget {
         )
       ],
     );
+  }
+}
+
+final List dummyvedio = [
+  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+];
+
+class Fastlaughvedioplayer extends StatefulWidget {
+  final int index;
+  const Fastlaughvedioplayer({super.key, required this.index});
+
+  @override
+  State<Fastlaughvedioplayer> createState() => _FastlaughvedioplayerState();
+}
+
+class _FastlaughvedioplayerState extends State<Fastlaughvedioplayer> {
+  late VideoPlayerController _playerController;
+  @override
+  void initState() {
+    _playerController = VideoPlayerController.networkUrl(
+        Uri.parse(dummyvedio[widget.index % 2]));
+    _playerController.initialize().then((value) {
+      setState(() {});
+      _playerController.play();
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: _playerController.value.isInitialized
+            ? AspectRatio(
+                aspectRatio: _playerController.value.aspectRatio,
+                child: VideoPlayer(_playerController),
+              )
+            : Center(child: CircularProgressIndicator()));
   }
 }
