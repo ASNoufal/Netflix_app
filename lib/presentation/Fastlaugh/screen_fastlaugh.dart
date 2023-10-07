@@ -22,7 +22,7 @@ class Fastlaugh extends StatelessWidget {
         );
       } else if (state.isError) {
         return const Center(
-          child: Text("eroor datta"),
+          child: Text("error datta"),
         );
       } else if (state.image.isEmpty) {
         return const Center(child: Text("dataerror"));

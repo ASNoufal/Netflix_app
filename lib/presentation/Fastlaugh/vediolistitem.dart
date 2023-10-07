@@ -4,6 +4,7 @@ import 'package:netflix/constant/constant.dart';
 import 'package:netflix/domain/downloads/Model/Modeldownload.dart';
 import 'package:netflix/presentation/Fastlaugh/screen_fastlaugh.dart';
 import 'package:video_player/video_player.dart';
+import 'package:share_plus/share_plus.dart';
 
 class VedioListItemINHERITEDWIDGET extends InheritedWidget {
   const VedioListItemINHERITEDWIDGET(
@@ -69,11 +70,19 @@ class VedioListItems extends StatelessWidget {
                       ? null
                       : NetworkImage("$imageurl$posterpath"),
                 ),
-                FastLaughIcons(
+                const FastLaughIcons(
                     icons: Icons.emoji_emotions_rounded, name: "LoL"),
-                FastLaughIcons(icons: Icons.add, name: "My List"),
-                FastLaughIcons(icons: Icons.navigation_outlined, name: "Share"),
-                FastLaughIcons(icons: Icons.play_arrow, name: "Play")
+                const FastLaughIcons(icons: Icons.add, name: "My List"),
+                GestureDetector(
+                  // onTap: () async {
+                  //   if (posterpath != null) {
+                  //     await Share.share(posterpath);
+                  //   }
+                  // },
+                  child: const FastLaughIcons(
+                      icons: Icons.navigation_outlined, name: "Share"),
+                ),
+                const FastLaughIcons(icons: Icons.play_arrow, name: "Play")
               ],
             ),
           ),
@@ -123,6 +132,6 @@ class _FastlaughvedioplayerState extends State<Fastlaughvedioplayer> {
                 aspectRatio: _playerController.value.aspectRatio,
                 child: VideoPlayer(_playerController),
               )
-            : Center(child: CircularProgressIndicator()));
+            : const Center(child: CircularProgressIndicator()));
   }
 }
