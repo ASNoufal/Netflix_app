@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/application/downloads/downloads_bloc.dart';
+import 'package:netflix/application/fastlaugh/fast_laugh_bloc.dart';
 import 'package:netflix/application/search/search_bloc.dart';
 import 'package:netflix/domain/core/injectable.dart';
 import 'package:netflix/presentation/mainpage/mainpage.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (ctx) => getIt<DownloadsBloc>()),
           BlocProvider(create: (ctx) => getIt<SearchBloc>()),
+          BlocProvider(create: (ctx) => getIt<FastLaughBloc>())
         ],
         child: MaterialApp(
           title: 'Flutter Demo',

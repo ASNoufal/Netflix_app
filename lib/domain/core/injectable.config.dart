@@ -12,6 +12,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:netflix/application/downloads/downloads_bloc.dart' as _i8;
+import 'package:netflix/application/fastlaugh/fast_laugh_bloc.dart' as _i9;
 import 'package:netflix/application/search/search_bloc.dart' as _i7;
 import 'package:netflix/domain/downloads/fazardsORrepo/downloads__repo.dart'
     as _i3;
@@ -41,6 +42,8 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i8.DownloadsBloc>(
         () => _i8.DownloadsBloc(gh<_i3.IDownloadrepo>()));
+    gh.factory<_i9.FastLaughBloc>(
+        () => _i9.FastLaughBloc(gh<_i3.IDownloadrepo>()));
     return this;
   }
 }
