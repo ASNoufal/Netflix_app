@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:netflix/constant/constant.dart';
 
 class CommingSoonTitle extends StatelessWidget {
@@ -27,12 +30,12 @@ class CommingSoonTitle extends StatelessWidget {
               height: 200,
               child: ListTile(
                 title: Text(
-                  "FEB",
+                  day,
                   style: TextStyle(fontSize: 30, color: Colors.grey[350]),
                 ),
-                subtitle: const Text(
-                  "11",
-                  style: TextStyle(fontSize: 25, color: Colors.white),
+                subtitle: Text(
+                  date,
+                  style: const TextStyle(fontSize: 25, color: Colors.white),
                 ),
               )),
           Stack(

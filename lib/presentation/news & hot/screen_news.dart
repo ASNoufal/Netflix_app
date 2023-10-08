@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:netflix/application/hotandnew/hotandnew_bloc.dart';
 import 'package:netflix/presentation/news%20&%20hot/widget/CommingSoontitle.dart';
 import 'package:netflix/presentation/news%20&%20hot/widget/Everyonewatchingtitle.dart';
@@ -72,12 +73,19 @@ class CommingSoonscreen extends StatelessWidget {
       builder: (context, state) {
         return ListView.builder(
             itemCount: state.commingsoon.length,
-            itemBuilder: ((context, index) => CommingSoonTitle(
-                day: "mar",
-                date: "11",
-                posterpath: state.commingsoon[index].posterpath,
-                title: state.commingsoon[index].title,
-                description: state.commingsoon[index].overview)));
+            itemBuilder: ((context, index) {
+              final datedata =
+                  DateTime.tryParse(state.commingsoon[index].releasedate);
+
+              var date = DateFormat.yMMMMd('en_US').format(datedata!);
+
+              return CommingSoonTitle(
+                  day: date.split(' ').first.substring(0, 3).toUpperCase(),
+                  date: state.commingsoon[index].releasedate.split('-')[2],
+                  posterpath: state.commingsoon[index].posterpath,
+                  title: state.commingsoon[index].title,
+                  description: state.commingsoon[index].overview);
+            }));
       },
     );
   }
