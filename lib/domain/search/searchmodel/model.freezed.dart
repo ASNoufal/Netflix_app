@@ -80,11 +80,11 @@ class _$SearchModelCopyWithImpl<$Res, $Val extends SearchModel>
 }
 
 /// @nodoc
-abstract class _$$_SearchModelCopyWith<$Res>
+abstract class _$$SearchModelImplCopyWith<$Res>
     implements $SearchModelCopyWith<$Res> {
-  factory _$$_SearchModelCopyWith(
-          _$_SearchModel value, $Res Function(_$_SearchModel) then) =
-      __$$_SearchModelCopyWithImpl<$Res>;
+  factory _$$SearchModelImplCopyWith(
+          _$SearchModelImpl value, $Res Function(_$SearchModelImpl) then) =
+      __$$SearchModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_SearchModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SearchModelCopyWithImpl<$Res>
-    extends _$SearchModelCopyWithImpl<$Res, _$_SearchModel>
-    implements _$$_SearchModelCopyWith<$Res> {
-  __$$_SearchModelCopyWithImpl(
-      _$_SearchModel _value, $Res Function(_$_SearchModel) _then)
+class __$$SearchModelImplCopyWithImpl<$Res>
+    extends _$SearchModelCopyWithImpl<$Res, _$SearchModelImpl>
+    implements _$$SearchModelImplCopyWith<$Res> {
+  __$$SearchModelImplCopyWithImpl(
+      _$SearchModelImpl _value, $Res Function(_$SearchModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,7 +108,7 @@ class __$$_SearchModelCopyWithImpl<$Res>
     Object? orginaltitle = null,
     Object? posterpath = null,
   }) {
-    return _then(_$_SearchModel(
+    return _then(_$SearchModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -127,14 +127,14 @@ class __$$_SearchModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SearchModel implements _SearchModel {
-  const _$_SearchModel(
+class _$SearchModelImpl implements _SearchModel {
+  const _$SearchModelImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "original_title") required this.orginaltitle,
       @JsonKey(name: "poster_path") required this.posterpath});
 
-  factory _$_SearchModel.fromJson(Map<String, dynamic> json) =>
-      _$$_SearchModelFromJson(json);
+  factory _$SearchModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SearchModelImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -155,7 +155,7 @@ class _$_SearchModel implements _SearchModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchModel &&
+            other is _$SearchModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.orginaltitle, orginaltitle) ||
                 other.orginaltitle == orginaltitle) &&
@@ -170,12 +170,12 @@ class _$_SearchModel implements _SearchModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchModelCopyWith<_$_SearchModel> get copyWith =>
-      __$$_SearchModelCopyWithImpl<_$_SearchModel>(this, _$identity);
+  _$$SearchModelImplCopyWith<_$SearchModelImpl> get copyWith =>
+      __$$SearchModelImplCopyWithImpl<_$SearchModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchModelToJson(
+    return _$$SearchModelImplToJson(
       this,
     );
   }
@@ -186,10 +186,10 @@ abstract class _SearchModel implements SearchModel {
           {@JsonKey(name: "id") required final int id,
           @JsonKey(name: "original_title") required final String orginaltitle,
           @JsonKey(name: "poster_path") required final String posterpath}) =
-      _$_SearchModel;
+      _$SearchModelImpl;
 
   factory _SearchModel.fromJson(Map<String, dynamic> json) =
-      _$_SearchModel.fromJson;
+      _$SearchModelImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -202,6 +202,6 @@ abstract class _SearchModel implements SearchModel {
   String get posterpath;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchModelCopyWith<_$_SearchModel> get copyWith =>
+  _$$SearchModelImplCopyWith<_$SearchModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

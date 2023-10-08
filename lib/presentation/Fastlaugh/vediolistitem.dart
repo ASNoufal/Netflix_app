@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/application/fastlaugh/fast_laugh_bloc.dart';
 import 'package:netflix/constant/constant.dart';
 import 'package:netflix/domain/downloads/Model/Modeldownload.dart';
 import 'package:netflix/presentation/Fastlaugh/screen_fastlaugh.dart';
@@ -70,15 +72,39 @@ class VedioListItems extends StatelessWidget {
                       ? null
                       : NetworkImage("$imageurl$posterpath"),
                 ),
-                const FastLaughIcons(
-                    icons: Icons.emoji_emotions_rounded, name: "LoL"),
+                ValueListenableBuilder(
+                    valueListenable: valueNotifier,
+                    builder: (context, newlistitem, _) {
+                      final _index = index;
+                      if (newlistitem.contains(_index)) {
+                        return GestureDetector(
+                          onTap: () {
+                            context
+                                .read<FastLaughBloc>()
+                                .add(Dislikebutton(index: _index));
+                          },
+                          child: const FastLaughIcons(
+                              icons: Icons.emoji_emotions_rounded, name: "LoL"),
+                        );
+                      } else {
+                        return GestureDetector(
+                          onTap: () {
+                            context
+                                .read<FastLaughBloc>()
+                                .add(Likedbutton(index: _index));
+                          },
+                          child: const FastLaughIcons(
+                              icons: Icons.favorite, name: "Liked"),
+                        );
+                      }
+                    }),
                 const FastLaughIcons(icons: Icons.add, name: "My List"),
                 GestureDetector(
-                  // onTap: () async {
-                  //   if (posterpath != null) {
-                  //     await Share.share(posterpath);
-                  //   }
-                  // },
+                  onTap: () async {
+                    if (posterpath != null) {
+                      await Share.share(posterpath);
+                    }
+                  },
                   child: const FastLaughIcons(
                       icons: Icons.navigation_outlined, name: "Share"),
                 ),
@@ -120,6 +146,12 @@ class _FastlaughvedioplayerState extends State<Fastlaughvedioplayer> {
       _playerController.play();
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _playerController.dispose();
+    super.dispose();
   }
 
   @override

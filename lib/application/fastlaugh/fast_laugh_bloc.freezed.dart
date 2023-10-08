@@ -19,32 +19,44 @@ mixin _$FastLaughEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() Initialised,
+    required TResult Function(int index) likedbutton,
+    required TResult Function(int index) dislikebutton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? Initialised,
+    TResult? Function(int index)? likedbutton,
+    TResult? Function(int index)? dislikebutton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? Initialised,
+    TResult Function(int index)? likedbutton,
+    TResult Function(int index)? dislikebutton,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialised value) Initialised,
+    required TResult Function(Likedbutton value) likedbutton,
+    required TResult Function(Dislikebutton value) dislikebutton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initialised value)? Initialised,
+    TResult? Function(Likedbutton value)? likedbutton,
+    TResult? Function(Dislikebutton value)? dislikebutton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialised value)? Initialised,
+    TResult Function(Likedbutton value)? likedbutton,
+    TResult Function(Dislikebutton value)? dislikebutton,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,25 +81,25 @@ class _$FastLaughEventCopyWithImpl<$Res, $Val extends FastLaughEvent>
 }
 
 /// @nodoc
-abstract class _$$InitialisedCopyWith<$Res> {
-  factory _$$InitialisedCopyWith(
-          _$Initialised value, $Res Function(_$Initialised) then) =
-      __$$InitialisedCopyWithImpl<$Res>;
+abstract class _$$InitialisedImplCopyWith<$Res> {
+  factory _$$InitialisedImplCopyWith(
+          _$InitialisedImpl value, $Res Function(_$InitialisedImpl) then) =
+      __$$InitialisedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialisedCopyWithImpl<$Res>
-    extends _$FastLaughEventCopyWithImpl<$Res, _$Initialised>
-    implements _$$InitialisedCopyWith<$Res> {
-  __$$InitialisedCopyWithImpl(
-      _$Initialised _value, $Res Function(_$Initialised) _then)
+class __$$InitialisedImplCopyWithImpl<$Res>
+    extends _$FastLaughEventCopyWithImpl<$Res, _$InitialisedImpl>
+    implements _$$InitialisedImplCopyWith<$Res> {
+  __$$InitialisedImplCopyWithImpl(
+      _$InitialisedImpl _value, $Res Function(_$InitialisedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Initialised implements Initialised {
-  const _$Initialised();
+class _$InitialisedImpl implements Initialised {
+  const _$InitialisedImpl();
 
   @override
   String toString() {
@@ -97,7 +109,7 @@ class _$Initialised implements Initialised {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Initialised);
+        (other.runtimeType == runtimeType && other is _$InitialisedImpl);
   }
 
   @override
@@ -107,6 +119,8 @@ class _$Initialised implements Initialised {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() Initialised,
+    required TResult Function(int index) likedbutton,
+    required TResult Function(int index) dislikebutton,
   }) {
     return Initialised();
   }
@@ -115,6 +129,8 @@ class _$Initialised implements Initialised {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? Initialised,
+    TResult? Function(int index)? likedbutton,
+    TResult? Function(int index)? dislikebutton,
   }) {
     return Initialised?.call();
   }
@@ -123,6 +139,8 @@ class _$Initialised implements Initialised {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? Initialised,
+    TResult Function(int index)? likedbutton,
+    TResult Function(int index)? dislikebutton,
     required TResult orElse(),
   }) {
     if (Initialised != null) {
@@ -135,6 +153,8 @@ class _$Initialised implements Initialised {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialised value) Initialised,
+    required TResult Function(Likedbutton value) likedbutton,
+    required TResult Function(Dislikebutton value) dislikebutton,
   }) {
     return Initialised(this);
   }
@@ -143,6 +163,8 @@ class _$Initialised implements Initialised {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initialised value)? Initialised,
+    TResult? Function(Likedbutton value)? likedbutton,
+    TResult? Function(Dislikebutton value)? dislikebutton,
   }) {
     return Initialised?.call(this);
   }
@@ -151,6 +173,8 @@ class _$Initialised implements Initialised {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialised value)? Initialised,
+    TResult Function(Likedbutton value)? likedbutton,
+    TResult Function(Dislikebutton value)? dislikebutton,
     required TResult orElse(),
   }) {
     if (Initialised != null) {
@@ -161,7 +185,285 @@ class _$Initialised implements Initialised {
 }
 
 abstract class Initialised implements FastLaughEvent {
-  const factory Initialised() = _$Initialised;
+  const factory Initialised() = _$InitialisedImpl;
+}
+
+/// @nodoc
+abstract class _$$LikedbuttonImplCopyWith<$Res> {
+  factory _$$LikedbuttonImplCopyWith(
+          _$LikedbuttonImpl value, $Res Function(_$LikedbuttonImpl) then) =
+      __$$LikedbuttonImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$LikedbuttonImplCopyWithImpl<$Res>
+    extends _$FastLaughEventCopyWithImpl<$Res, _$LikedbuttonImpl>
+    implements _$$LikedbuttonImplCopyWith<$Res> {
+  __$$LikedbuttonImplCopyWithImpl(
+      _$LikedbuttonImpl _value, $Res Function(_$LikedbuttonImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$LikedbuttonImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LikedbuttonImpl implements Likedbutton {
+  const _$LikedbuttonImpl({required this.index});
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'FastLaughEvent.likedbutton(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LikedbuttonImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikedbuttonImplCopyWith<_$LikedbuttonImpl> get copyWith =>
+      __$$LikedbuttonImplCopyWithImpl<_$LikedbuttonImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() Initialised,
+    required TResult Function(int index) likedbutton,
+    required TResult Function(int index) dislikebutton,
+  }) {
+    return likedbutton(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? Initialised,
+    TResult? Function(int index)? likedbutton,
+    TResult? Function(int index)? dislikebutton,
+  }) {
+    return likedbutton?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? Initialised,
+    TResult Function(int index)? likedbutton,
+    TResult Function(int index)? dislikebutton,
+    required TResult orElse(),
+  }) {
+    if (likedbutton != null) {
+      return likedbutton(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialised value) Initialised,
+    required TResult Function(Likedbutton value) likedbutton,
+    required TResult Function(Dislikebutton value) dislikebutton,
+  }) {
+    return likedbutton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialised value)? Initialised,
+    TResult? Function(Likedbutton value)? likedbutton,
+    TResult? Function(Dislikebutton value)? dislikebutton,
+  }) {
+    return likedbutton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialised value)? Initialised,
+    TResult Function(Likedbutton value)? likedbutton,
+    TResult Function(Dislikebutton value)? dislikebutton,
+    required TResult orElse(),
+  }) {
+    if (likedbutton != null) {
+      return likedbutton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Likedbutton implements FastLaughEvent {
+  const factory Likedbutton({required final int index}) = _$LikedbuttonImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$LikedbuttonImplCopyWith<_$LikedbuttonImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DislikebuttonImplCopyWith<$Res> {
+  factory _$$DislikebuttonImplCopyWith(
+          _$DislikebuttonImpl value, $Res Function(_$DislikebuttonImpl) then) =
+      __$$DislikebuttonImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$DislikebuttonImplCopyWithImpl<$Res>
+    extends _$FastLaughEventCopyWithImpl<$Res, _$DislikebuttonImpl>
+    implements _$$DislikebuttonImplCopyWith<$Res> {
+  __$$DislikebuttonImplCopyWithImpl(
+      _$DislikebuttonImpl _value, $Res Function(_$DislikebuttonImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$DislikebuttonImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DislikebuttonImpl implements Dislikebutton {
+  const _$DislikebuttonImpl({required this.index});
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'FastLaughEvent.dislikebutton(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DislikebuttonImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DislikebuttonImplCopyWith<_$DislikebuttonImpl> get copyWith =>
+      __$$DislikebuttonImplCopyWithImpl<_$DislikebuttonImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() Initialised,
+    required TResult Function(int index) likedbutton,
+    required TResult Function(int index) dislikebutton,
+  }) {
+    return dislikebutton(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? Initialised,
+    TResult? Function(int index)? likedbutton,
+    TResult? Function(int index)? dislikebutton,
+  }) {
+    return dislikebutton?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? Initialised,
+    TResult Function(int index)? likedbutton,
+    TResult Function(int index)? dislikebutton,
+    required TResult orElse(),
+  }) {
+    if (dislikebutton != null) {
+      return dislikebutton(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialised value) Initialised,
+    required TResult Function(Likedbutton value) likedbutton,
+    required TResult Function(Dislikebutton value) dislikebutton,
+  }) {
+    return dislikebutton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialised value)? Initialised,
+    TResult? Function(Likedbutton value)? likedbutton,
+    TResult? Function(Dislikebutton value)? dislikebutton,
+  }) {
+    return dislikebutton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialised value)? Initialised,
+    TResult Function(Likedbutton value)? likedbutton,
+    TResult Function(Dislikebutton value)? dislikebutton,
+    required TResult orElse(),
+  }) {
+    if (dislikebutton != null) {
+      return dislikebutton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Dislikebutton implements FastLaughEvent {
+  const factory Dislikebutton({required final int index}) = _$DislikebuttonImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$DislikebuttonImplCopyWith<_$DislikebuttonImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -219,22 +521,22 @@ class _$FastLaughStateCopyWithImpl<$Res, $Val extends FastLaughState>
 }
 
 /// @nodoc
-abstract class _$$_FastLaughStateCopyWith<$Res>
+abstract class _$$FastLaughStateImplCopyWith<$Res>
     implements $FastLaughStateCopyWith<$Res> {
-  factory _$$_FastLaughStateCopyWith(
-          _$_FastLaughState value, $Res Function(_$_FastLaughState) then) =
-      __$$_FastLaughStateCopyWithImpl<$Res>;
+  factory _$$FastLaughStateImplCopyWith(_$FastLaughStateImpl value,
+          $Res Function(_$FastLaughStateImpl) then) =
+      __$$FastLaughStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isloading, bool isError, List<Downloads> image});
 }
 
 /// @nodoc
-class __$$_FastLaughStateCopyWithImpl<$Res>
-    extends _$FastLaughStateCopyWithImpl<$Res, _$_FastLaughState>
-    implements _$$_FastLaughStateCopyWith<$Res> {
-  __$$_FastLaughStateCopyWithImpl(
-      _$_FastLaughState _value, $Res Function(_$_FastLaughState) _then)
+class __$$FastLaughStateImplCopyWithImpl<$Res>
+    extends _$FastLaughStateCopyWithImpl<$Res, _$FastLaughStateImpl>
+    implements _$$FastLaughStateImplCopyWith<$Res> {
+  __$$FastLaughStateImplCopyWithImpl(
+      _$FastLaughStateImpl _value, $Res Function(_$FastLaughStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -244,7 +546,7 @@ class __$$_FastLaughStateCopyWithImpl<$Res>
     Object? isError = null,
     Object? image = null,
   }) {
-    return _then(_$_FastLaughState(
+    return _then(_$FastLaughStateImpl(
       isloading: null == isloading
           ? _value.isloading
           : isloading // ignore: cast_nullable_to_non_nullable
@@ -263,8 +565,8 @@ class __$$_FastLaughStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FastLaughState implements _FastLaughState {
-  const _$_FastLaughState(
+class _$FastLaughStateImpl implements _FastLaughState {
+  const _$FastLaughStateImpl(
       {required this.isloading,
       required this.isError,
       required final List<Downloads> image})
@@ -291,7 +593,7 @@ class _$_FastLaughState implements _FastLaughState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FastLaughState &&
+            other is _$FastLaughStateImpl &&
             (identical(other.isloading, isloading) ||
                 other.isloading == isloading) &&
             (identical(other.isError, isError) || other.isError == isError) &&
@@ -305,15 +607,16 @@ class _$_FastLaughState implements _FastLaughState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FastLaughStateCopyWith<_$_FastLaughState> get copyWith =>
-      __$$_FastLaughStateCopyWithImpl<_$_FastLaughState>(this, _$identity);
+  _$$FastLaughStateImplCopyWith<_$FastLaughStateImpl> get copyWith =>
+      __$$FastLaughStateImplCopyWithImpl<_$FastLaughStateImpl>(
+          this, _$identity);
 }
 
 abstract class _FastLaughState implements FastLaughState {
   const factory _FastLaughState(
       {required final bool isloading,
       required final bool isError,
-      required final List<Downloads> image}) = _$_FastLaughState;
+      required final List<Downloads> image}) = _$FastLaughStateImpl;
 
   @override
   bool get isloading;
@@ -323,6 +626,6 @@ abstract class _FastLaughState implements FastLaughState {
   List<Downloads> get image;
   @override
   @JsonKey(ignore: true)
-  _$$_FastLaughStateCopyWith<_$_FastLaughState> get copyWith =>
+  _$$FastLaughStateImplCopyWith<_$FastLaughStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
