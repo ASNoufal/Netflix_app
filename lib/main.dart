@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (ctx) => getIt<DownloadsBloc>()),
           BlocProvider(create: (ctx) => getIt<SearchBloc>()),
           BlocProvider(create: (ctx) => getIt<FastLaughBloc>()),
-          BlocProvider(create: (ctx) => getIt<HotandnewBloc>())
+          BlocProvider(create: (ctx) => getIt<HotandnewBloc>()),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',

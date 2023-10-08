@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/application/hotandnew/hotandnew_bloc.dart';
 import 'package:netflix/presentation/news%20&%20hot/widget/CommingSoontitle.dart';
 import 'package:netflix/presentation/news%20&%20hot/widget/Everyonewatchingtitle.dart';
 
@@ -51,18 +53,43 @@ class NewsandHot extends StatelessWidget {
                 Tab(text: "👀 Everyone's Watching")
               ]),
         ),
-        body: TabBarView(children: [commingSoon(context), Everyonewatching()]),
+        body: const TabBarView(
+            children: [CommingSoonscreen(), Everyonewatchingscreen()]),
       ),
     );
   }
 }
 
-Widget commingSoon(BuildContext context) {
-  return ListView.builder(
-      itemCount: 10, itemBuilder: ((context, index) => CommingSoonTitle()));
+class CommingSoonscreen extends StatelessWidget {
+  const CommingSoonscreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<HotandnewBloc>().add(const HotandnewEvent.commingSoon());
+    });
+    return BlocBuilder<HotandnewBloc, HotandnewState>(
+      builder: (context, state) {
+        return ListView.builder(
+            itemCount: state.commingsoon.length,
+            itemBuilder: ((context, index) => CommingSoonTitle(
+                day: "mar",
+                date: "11",
+                posterpath: state.commingsoon[index].posterpath,
+                title: state.commingsoon[index].title,
+                description: state.commingsoon[index].overview)));
+      },
+    );
+  }
 }
 
-Widget Everyonewatching() {
-  return ListView.builder(
-      itemCount: 10, itemBuilder: (context, index) => EveryonewatchingTitle());
+class Everyonewatchingscreen extends StatelessWidget {
+  const Everyonewatchingscreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) => const EveryonewatchingTitle());
+  }
 }

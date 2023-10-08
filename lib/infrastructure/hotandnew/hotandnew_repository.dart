@@ -1,10 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:netflix/apikey/downloads_api.dart';
 import 'package:netflix/domain/Hotandnew/fazad_or_repo/hotandnew_repo.dart';
 import 'package:netflix/domain/MainFailure/MainFailure.dart';
-import 'package:netflix/domain/Model/hotandnew.dart';
 
+import '../../domain/Hotandnew/Model/hotandnew.dart';
+
+@LazySingleton(as: IhotandnewRepo)
 class Hotandnewrepo extends IhotandnewRepo {
   @override
   Future<Either<MainFailure, List<Hotandnew>>> commingSoondata() async {

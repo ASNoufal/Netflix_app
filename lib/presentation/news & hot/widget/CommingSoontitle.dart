@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix/constant/constant.dart';
 
 class CommingSoonTitle extends StatelessWidget {
-  const CommingSoonTitle({super.key});
+  final String day;
+  final String date;
+  final String posterpath;
+  final String title;
+  final String description;
+
+  const CommingSoonTitle(
+      {super.key,
+      required this.day,
+      required this.date,
+      required this.posterpath,
+      required this.title,
+      required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +40,10 @@ class CommingSoonTitle extends StatelessWidget {
               Container(
                   width: MediaQuery.of(context).size.width - 70,
                   height: 200,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                       image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              "https://www.themoviedb.org/t/p/w250_and_h141_face/oqP1qEZccq5AD9TVTIaO6IGUj7o.jpg")))),
+                          fit: BoxFit.fill,
+                          image: NetworkImage("$imageurl$posterpath")))),
               Positioned(
                 right: 10,
                 bottom: 10,
@@ -53,12 +65,14 @@ class CommingSoonTitle extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         child: Row(
           children: [
-            Text(
-              "Tall Girls 2",
-              style: GoogleFonts.fuggles(
-                  fontSize: 40, fontWeight: FontWeight.bold),
+            SizedBox(
+              width: 200,
+              child: Text(
+                title,
+                style: GoogleFonts.fuggles(
+                    fontSize: 40, fontWeight: FontWeight.bold),
+              ),
             ),
-            const Spacer(),
             const Column(
               children: [
                 Icon(
@@ -85,10 +99,14 @@ class CommingSoonTitle extends StatelessWidget {
           ],
         ),
       ),
-      const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30),
-        child: Text(
-            "Landing the lead in the school musicial is a dream come true for jodi,until the pressure sends her coorfidence"),
+      Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Text(
+            description,
+            maxLines: 4,
+          )),
+      const SizedBox(
+        height: 10,
       )
     ]);
   }

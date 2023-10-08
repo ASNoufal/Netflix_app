@@ -8,5 +8,8 @@ class HotandnewState with _$HotandnewState {
     required bool isloading,
     required bool isError,
   }) = _HotandnewState;
-  const factory HotandnewState.Initial(HotandnewState()) = _Initial;
+  factory HotandnewState.Initial() {
+    return const HotandnewState(
+        commingsoon: [], everyonewaching: [], isloading: true, isError: false);
+  }
 }

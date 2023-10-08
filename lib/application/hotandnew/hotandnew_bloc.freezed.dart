@@ -38,19 +38,19 @@ mixin _$HotandnewEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CommingSoon value) commingSoon,
-    required TResult Function(_Everyonewatching value) everyonewatching,
+    required TResult Function(Everyonewatching value) everyonewatching,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CommingSoon value)? commingSoon,
-    TResult? Function(_Everyonewatching value)? everyonewatching,
+    TResult? Function(Everyonewatching value)? everyonewatching,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CommingSoon value)? commingSoon,
-    TResult Function(_Everyonewatching value)? everyonewatching,
+    TResult Function(Everyonewatching value)? everyonewatching,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,7 +144,7 @@ class _$CommingSoonImpl implements CommingSoon {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CommingSoon value) commingSoon,
-    required TResult Function(_Everyonewatching value) everyonewatching,
+    required TResult Function(Everyonewatching value) everyonewatching,
   }) {
     return commingSoon(this);
   }
@@ -153,7 +153,7 @@ class _$CommingSoonImpl implements CommingSoon {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CommingSoon value)? commingSoon,
-    TResult? Function(_Everyonewatching value)? everyonewatching,
+    TResult? Function(Everyonewatching value)? everyonewatching,
   }) {
     return commingSoon?.call(this);
   }
@@ -162,7 +162,7 @@ class _$CommingSoonImpl implements CommingSoon {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CommingSoon value)? commingSoon,
-    TResult Function(_Everyonewatching value)? everyonewatching,
+    TResult Function(Everyonewatching value)? everyonewatching,
     required TResult orElse(),
   }) {
     if (commingSoon != null) {
@@ -194,7 +194,7 @@ class __$$EveryonewatchingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EveryonewatchingImpl implements _Everyonewatching {
+class _$EveryonewatchingImpl implements Everyonewatching {
   const _$EveryonewatchingImpl();
 
   @override
@@ -246,7 +246,7 @@ class _$EveryonewatchingImpl implements _Everyonewatching {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CommingSoon value) commingSoon,
-    required TResult Function(_Everyonewatching value) everyonewatching,
+    required TResult Function(Everyonewatching value) everyonewatching,
   }) {
     return everyonewatching(this);
   }
@@ -255,7 +255,7 @@ class _$EveryonewatchingImpl implements _Everyonewatching {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CommingSoon value)? commingSoon,
-    TResult? Function(_Everyonewatching value)? everyonewatching,
+    TResult? Function(Everyonewatching value)? everyonewatching,
   }) {
     return everyonewatching?.call(this);
   }
@@ -264,7 +264,7 @@ class _$EveryonewatchingImpl implements _Everyonewatching {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CommingSoon value)? commingSoon,
-    TResult Function(_Everyonewatching value)? everyonewatching,
+    TResult Function(Everyonewatching value)? everyonewatching,
     required TResult orElse(),
   }) {
     if (everyonewatching != null) {
@@ -274,55 +274,19 @@ class _$EveryonewatchingImpl implements _Everyonewatching {
   }
 }
 
-abstract class _Everyonewatching implements HotandnewEvent {
-  const factory _Everyonewatching() = _$EveryonewatchingImpl;
+abstract class Everyonewatching implements HotandnewEvent {
+  const factory Everyonewatching() = _$EveryonewatchingImpl;
 }
 
 /// @nodoc
 mixin _$HotandnewState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(List<Hotandnew> commingsoon,
-            List<Hotandnew> everyonewaching, bool isloading, bool isError)
-        $default, {
-    required TResult Function(dynamic Function() HotandnewState) Initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(List<Hotandnew> commingsoon,
-            List<Hotandnew> everyonewaching, bool isloading, bool isError)?
-        $default, {
-    TResult? Function(dynamic Function() HotandnewState)? Initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<Hotandnew> commingsoon,
-            List<Hotandnew> everyonewaching, bool isloading, bool isError)?
-        $default, {
-    TResult Function(dynamic Function() HotandnewState)? Initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_HotandnewState value) $default, {
-    required TResult Function(_Initial value) Initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_HotandnewState value)? $default, {
-    TResult? Function(_Initial value)? Initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_HotandnewState value)? $default, {
-    TResult Function(_Initial value)? Initial,
-    required TResult orElse(),
-  }) =>
+  List<Hotandnew> get commingsoon => throw _privateConstructorUsedError;
+  List<Hotandnew> get everyonewaching => throw _privateConstructorUsedError;
+  bool get isloading => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HotandnewStateCopyWith<HotandnewState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -331,6 +295,12 @@ abstract class $HotandnewStateCopyWith<$Res> {
   factory $HotandnewStateCopyWith(
           HotandnewState value, $Res Function(HotandnewState) then) =
       _$HotandnewStateCopyWithImpl<$Res, HotandnewState>;
+  @useResult
+  $Res call(
+      {List<Hotandnew> commingsoon,
+      List<Hotandnew> everyonewaching,
+      bool isloading,
+      bool isError});
 }
 
 /// @nodoc
@@ -342,13 +312,43 @@ class _$HotandnewStateCopyWithImpl<$Res, $Val extends HotandnewState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? commingsoon = null,
+    Object? everyonewaching = null,
+    Object? isloading = null,
+    Object? isError = null,
+  }) {
+    return _then(_value.copyWith(
+      commingsoon: null == commingsoon
+          ? _value.commingsoon
+          : commingsoon // ignore: cast_nullable_to_non_nullable
+              as List<Hotandnew>,
+      everyonewaching: null == everyonewaching
+          ? _value.everyonewaching
+          : everyonewaching // ignore: cast_nullable_to_non_nullable
+              as List<Hotandnew>,
+      isloading: null == isloading
+          ? _value.isloading
+          : isloading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: null == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$HotandnewStateImplCopyWith<$Res> {
+abstract class _$$HotandnewStateImplCopyWith<$Res>
+    implements $HotandnewStateCopyWith<$Res> {
   factory _$$HotandnewStateImplCopyWith(_$HotandnewStateImpl value,
           $Res Function(_$HotandnewStateImpl) then) =
       __$$HotandnewStateImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
       {List<Hotandnew> commingsoon,
@@ -459,74 +459,6 @@ class _$HotandnewStateImpl implements _HotandnewState {
   _$$HotandnewStateImplCopyWith<_$HotandnewStateImpl> get copyWith =>
       __$$HotandnewStateImplCopyWithImpl<_$HotandnewStateImpl>(
           this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(List<Hotandnew> commingsoon,
-            List<Hotandnew> everyonewaching, bool isloading, bool isError)
-        $default, {
-    required TResult Function(dynamic Function() HotandnewState) Initial,
-  }) {
-    return $default(commingsoon, everyonewaching, isloading, isError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(List<Hotandnew> commingsoon,
-            List<Hotandnew> everyonewaching, bool isloading, bool isError)?
-        $default, {
-    TResult? Function(dynamic Function() HotandnewState)? Initial,
-  }) {
-    return $default?.call(commingsoon, everyonewaching, isloading, isError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<Hotandnew> commingsoon,
-            List<Hotandnew> everyonewaching, bool isloading, bool isError)?
-        $default, {
-    TResult Function(dynamic Function() HotandnewState)? Initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(commingsoon, everyonewaching, isloading, isError);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_HotandnewState value) $default, {
-    required TResult Function(_Initial value) Initial,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_HotandnewState value)? $default, {
-    TResult? Function(_Initial value)? Initial,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_HotandnewState value)? $default, {
-    TResult Function(_Initial value)? Initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _HotandnewState implements HotandnewState {
@@ -536,152 +468,16 @@ abstract class _HotandnewState implements HotandnewState {
       required final bool isloading,
       required final bool isError}) = _$HotandnewStateImpl;
 
+  @override
   List<Hotandnew> get commingsoon;
+  @override
   List<Hotandnew> get everyonewaching;
+  @override
   bool get isloading;
+  @override
   bool get isError;
+  @override
   @JsonKey(ignore: true)
   _$$HotandnewStateImplCopyWith<_$HotandnewStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({dynamic Function() HotandnewState});
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$HotandnewStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? HotandnewState = null,
-  }) {
-    return _then(_$InitialImpl(
-      null == HotandnewState
-          ? _value.HotandnewState
-          : HotandnewState // ignore: cast_nullable_to_non_nullable
-              as dynamic Function(),
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl(this.HotandnewState);
-
-  @override
-  final dynamic Function() HotandnewState;
-
-  @override
-  String toString() {
-    return 'HotandnewState.Initial(HotandnewState: $HotandnewState)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
-            (identical(other.HotandnewState, HotandnewState) ||
-                other.HotandnewState == HotandnewState));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, HotandnewState);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(List<Hotandnew> commingsoon,
-            List<Hotandnew> everyonewaching, bool isloading, bool isError)
-        $default, {
-    required TResult Function(dynamic Function() HotandnewState) Initial,
-  }) {
-    return Initial(HotandnewState);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(List<Hotandnew> commingsoon,
-            List<Hotandnew> everyonewaching, bool isloading, bool isError)?
-        $default, {
-    TResult? Function(dynamic Function() HotandnewState)? Initial,
-  }) {
-    return Initial?.call(HotandnewState);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<Hotandnew> commingsoon,
-            List<Hotandnew> everyonewaching, bool isloading, bool isError)?
-        $default, {
-    TResult Function(dynamic Function() HotandnewState)? Initial,
-    required TResult orElse(),
-  }) {
-    if (Initial != null) {
-      return Initial(HotandnewState);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_HotandnewState value) $default, {
-    required TResult Function(_Initial value) Initial,
-  }) {
-    return Initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_HotandnewState value)? $default, {
-    TResult? Function(_Initial value)? Initial,
-  }) {
-    return Initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_HotandnewState value)? $default, {
-    TResult Function(_Initial value)? Initial,
-    required TResult orElse(),
-  }) {
-    if (Initial != null) {
-      return Initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements HotandnewState {
-  const factory _Initial(final dynamic Function() HotandnewState) =
-      _$InitialImpl;
-
-  dynamic Function() get HotandnewState;
-  @JsonKey(ignore: true)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
