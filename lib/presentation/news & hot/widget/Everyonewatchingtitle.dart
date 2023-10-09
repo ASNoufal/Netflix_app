@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/constant/constant.dart';
 
 class EveryonewatchingTitle extends StatelessWidget {
-  const EveryonewatchingTitle({super.key});
+  final String title;
+  final String description;
+  final String posterpath;
+
+  const EveryonewatchingTitle(
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.posterpath});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +20,14 @@ class EveryonewatchingTitle extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const Text("Friends", style: TextStyle(fontSize: 20)),
+        Text(title, style: const TextStyle(fontSize: 20)),
         const SizedBox(
           height: 20,
         ),
-        const Text(
-            "The hit sitcome follow the merry misadvantage of something pais as they navigate the pitfalls of work lifed live"),
+        Text(
+          description,
+          maxLines: 2,
+        ),
         const SizedBox(
           height: 30,
         ),
@@ -25,11 +36,11 @@ class EveryonewatchingTitle extends StatelessWidget {
             Container(
                 width: double.infinity,
                 height: 200,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                     image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                            "https://www.themoviedb.org/t/p/w250_and_h141_face/9t0tJXcOdWwwxmGTk112HGDaT0Q.jpg")))),
+                  fit: BoxFit.cover,
+                  image: NetworkImage("$imageurl$posterpath"),
+                ))),
             Positioned(
               right: 10,
               bottom: 10,

@@ -4,5 +4,4 @@ import 'package:netflix/domain/MainFailure/MainFailure.dart';
 
 abstract class IhotandnewRepo {
   Future<Either<MainFailure, List<Hotandnew>>> commingSoondata();
-  Future<Either<MainFailure, List<Hotandnew>>> everyoneWachingdata();
 }

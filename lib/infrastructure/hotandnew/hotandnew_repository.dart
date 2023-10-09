@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:netflix/apikey/downloads_api.dart';
 import 'package:netflix/domain/Hotandnew/fazad_or_repo/hotandnew_repo.dart';
 import 'package:netflix/domain/MainFailure/MainFailure.dart';
+import 'package:netflix/domain/everyonewatching/Model.dart';
 
 import '../../domain/Hotandnew/Model/hotandnew.dart';
 
@@ -26,23 +27,6 @@ class Hotandnewrepo extends IhotandnewRepo {
       }
     } catch (e) {
       return const Left(MainFailure.clientfailure());
-    }
-  }
-
-  @override
-  Future<Either<MainFailure, List<Hotandnew>>> everyoneWachingdata() async {
-    final response = await Dio().get(Apiservice.hotandnew);
-    try {
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final everyonewatching = (response.data["results"] as List)
-            .map((e) => Hotandnew.fromJson(e))
-            .toList();
-        return right(everyonewatching);
-      } else {
-        return left(const MainFailure.serverfailure());
-      }
-    } catch (e) {
-      return left(const MainFailure.clientfailure());
     }
   }
 }

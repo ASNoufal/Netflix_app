@@ -281,7 +281,8 @@ abstract class Everyonewatching implements HotandnewEvent {
 /// @nodoc
 mixin _$HotandnewState {
   List<Hotandnew> get commingsoon => throw _privateConstructorUsedError;
-  List<Hotandnew> get everyonewaching => throw _privateConstructorUsedError;
+  List<Everyonewatchingfreezed> get everyonewaching =>
+      throw _privateConstructorUsedError;
   bool get isloading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
 
@@ -298,7 +299,7 @@ abstract class $HotandnewStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<Hotandnew> commingsoon,
-      List<Hotandnew> everyonewaching,
+      List<Everyonewatchingfreezed> everyonewaching,
       bool isloading,
       bool isError});
 }
@@ -329,7 +330,7 @@ class _$HotandnewStateCopyWithImpl<$Res, $Val extends HotandnewState>
       everyonewaching: null == everyonewaching
           ? _value.everyonewaching
           : everyonewaching // ignore: cast_nullable_to_non_nullable
-              as List<Hotandnew>,
+              as List<Everyonewatchingfreezed>,
       isloading: null == isloading
           ? _value.isloading
           : isloading // ignore: cast_nullable_to_non_nullable
@@ -352,7 +353,7 @@ abstract class _$$HotandnewStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {List<Hotandnew> commingsoon,
-      List<Hotandnew> everyonewaching,
+      List<Everyonewatchingfreezed> everyonewaching,
       bool isloading,
       bool isError});
 }
@@ -381,7 +382,7 @@ class __$$HotandnewStateImplCopyWithImpl<$Res>
       everyonewaching: null == everyonewaching
           ? _value._everyonewaching
           : everyonewaching // ignore: cast_nullable_to_non_nullable
-              as List<Hotandnew>,
+              as List<Everyonewatchingfreezed>,
       isloading: null == isloading
           ? _value.isloading
           : isloading // ignore: cast_nullable_to_non_nullable
@@ -399,7 +400,7 @@ class __$$HotandnewStateImplCopyWithImpl<$Res>
 class _$HotandnewStateImpl implements _HotandnewState {
   const _$HotandnewStateImpl(
       {required final List<Hotandnew> commingsoon,
-      required final List<Hotandnew> everyonewaching,
+      required final List<Everyonewatchingfreezed> everyonewaching,
       required this.isloading,
       required this.isError})
       : _commingsoon = commingsoon,
@@ -413,9 +414,9 @@ class _$HotandnewStateImpl implements _HotandnewState {
     return EqualUnmodifiableListView(_commingsoon);
   }
 
-  final List<Hotandnew> _everyonewaching;
+  final List<Everyonewatchingfreezed> _everyonewaching;
   @override
-  List<Hotandnew> get everyonewaching {
+  List<Everyonewatchingfreezed> get everyonewaching {
     if (_everyonewaching is EqualUnmodifiableListView) return _everyonewaching;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_everyonewaching);
@@ -464,14 +465,14 @@ class _$HotandnewStateImpl implements _HotandnewState {
 abstract class _HotandnewState implements HotandnewState {
   const factory _HotandnewState(
       {required final List<Hotandnew> commingsoon,
-      required final List<Hotandnew> everyonewaching,
+      required final List<Everyonewatchingfreezed> everyonewaching,
       required final bool isloading,
       required final bool isError}) = _$HotandnewStateImpl;
 
   @override
   List<Hotandnew> get commingsoon;
   @override
-  List<Hotandnew> get everyonewaching;
+  List<Everyonewatchingfreezed> get everyonewaching;
   @override
   bool get isloading;
   @override

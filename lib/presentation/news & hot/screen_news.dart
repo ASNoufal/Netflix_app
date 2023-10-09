@@ -71,6 +71,19 @@ class CommingSoonscreen extends StatelessWidget {
     });
     return BlocBuilder<HotandnewBloc, HotandnewState>(
       builder: (context, state) {
+        if (state.isloading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state.isError) {
+          return const Center(
+            child: Text("Error"),
+          );
+        } else if (state.commingsoon.isEmpty) {
+          return const Center(
+            child: Text("no item found"),
+          );
+        }
         return ListView.builder(
             itemCount: state.commingsoon.length,
             itemBuilder: ((context, index) {
@@ -96,8 +109,29 @@ class Everyonewatchingscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) => const EveryonewatchingTitle());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context
+          .read<HotandnewBloc>()
+          .add(const HotandnewEvent.everyonewatching());
+    });
+    return BlocBuilder<HotandnewBloc, HotandnewState>(
+      builder: (context, state) {
+        if (state.isloading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state.isError) {
+          return const Center(
+            child: Text("Error in the data"),
+          );
+        }
+        return ListView.builder(
+            itemCount: state.everyonewaching.length,
+            itemBuilder: (context, index) => EveryonewatchingTitle(
+                title: state.everyonewaching[index].title,
+                description: state.everyonewaching[index].overview,
+                posterpath: state.everyonewaching[index].posterpath));
+      },
+    );
   }
 }
