@@ -167,6 +167,7 @@ abstract class _Getdownloadsimage implements DownloadsEvent {
 /// @nodoc
 mixin _$DownloadsState {
   bool get isloading => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
   List<Downloads> get downloads => throw _privateConstructorUsedError;
   Option<Either<MainFailure, List<Downloads>>> get optionforfailureorsuccess =>
       throw _privateConstructorUsedError;
@@ -184,6 +185,7 @@ abstract class $DownloadsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isloading,
+      bool isError,
       List<Downloads> downloads,
       Option<Either<MainFailure, List<Downloads>>> optionforfailureorsuccess});
 }
@@ -202,6 +204,7 @@ class _$DownloadsStateCopyWithImpl<$Res, $Val extends DownloadsState>
   @override
   $Res call({
     Object? isloading = null,
+    Object? isError = null,
     Object? downloads = null,
     Object? optionforfailureorsuccess = null,
   }) {
@@ -209,6 +212,10 @@ class _$DownloadsStateCopyWithImpl<$Res, $Val extends DownloadsState>
       isloading: null == isloading
           ? _value.isloading
           : isloading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: null == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
               as bool,
       downloads: null == downloads
           ? _value.downloads
@@ -232,6 +239,7 @@ abstract class _$$DownloadsStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isloading,
+      bool isError,
       List<Downloads> downloads,
       Option<Either<MainFailure, List<Downloads>>> optionforfailureorsuccess});
 }
@@ -248,6 +256,7 @@ class __$$DownloadsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isloading = null,
+    Object? isError = null,
     Object? downloads = null,
     Object? optionforfailureorsuccess = null,
   }) {
@@ -255,6 +264,10 @@ class __$$DownloadsStateImplCopyWithImpl<$Res>
       isloading: null == isloading
           ? _value.isloading
           : isloading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: null == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
               as bool,
       downloads: null == downloads
           ? _value._downloads
@@ -273,12 +286,15 @@ class __$$DownloadsStateImplCopyWithImpl<$Res>
 class _$DownloadsStateImpl implements _DownloadsState {
   const _$DownloadsStateImpl(
       {required this.isloading,
+      required this.isError,
       required final List<Downloads> downloads,
       required this.optionforfailureorsuccess})
       : _downloads = downloads;
 
   @override
   final bool isloading;
+  @override
+  final bool isError;
   final List<Downloads> _downloads;
   @override
   List<Downloads> get downloads {
@@ -292,7 +308,7 @@ class _$DownloadsStateImpl implements _DownloadsState {
 
   @override
   String toString() {
-    return 'DownloadsState(isloading: $isloading, downloads: $downloads, optionforfailureorsuccess: $optionforfailureorsuccess)';
+    return 'DownloadsState(isloading: $isloading, isError: $isError, downloads: $downloads, optionforfailureorsuccess: $optionforfailureorsuccess)';
   }
 
   @override
@@ -302,6 +318,7 @@ class _$DownloadsStateImpl implements _DownloadsState {
             other is _$DownloadsStateImpl &&
             (identical(other.isloading, isloading) ||
                 other.isloading == isloading) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
             const DeepCollectionEquality()
                 .equals(other._downloads, _downloads) &&
             (identical(other.optionforfailureorsuccess,
@@ -313,6 +330,7 @@ class _$DownloadsStateImpl implements _DownloadsState {
   int get hashCode => Object.hash(
       runtimeType,
       isloading,
+      isError,
       const DeepCollectionEquality().hash(_downloads),
       optionforfailureorsuccess);
 
@@ -327,12 +345,15 @@ class _$DownloadsStateImpl implements _DownloadsState {
 abstract class _DownloadsState implements DownloadsState {
   const factory _DownloadsState(
       {required final bool isloading,
+      required final bool isError,
       required final List<Downloads> downloads,
       required final Option<Either<MainFailure, List<Downloads>>>
           optionforfailureorsuccess}) = _$DownloadsStateImpl;
 
   @override
   bool get isloading;
+  @override
+  bool get isError;
   @override
   List<Downloads> get downloads;
   @override

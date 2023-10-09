@@ -58,7 +58,7 @@ class EveryonewatchingTitle extends StatelessWidget {
         ),
         Row(
           children: [
-            Spacer(),
+            const Spacer(),
             iconswithname("share", Icons.share),
             iconswithname("Add", Icons.add),
             iconswithname("Play", Icons.play_arrow)

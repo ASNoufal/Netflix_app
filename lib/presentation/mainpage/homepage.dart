@@ -1,6 +1,11 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/application/downloads/downloads_bloc.dart';
+import 'package:netflix/application/home/home_bloc.dart';
+import 'package:netflix/application/hotandnew/hotandnew_bloc.dart';
+import 'package:netflix/constant/constant.dart';
 import 'package:netflix/presentation/mainpage/widgets/Mainpagefirstsection.dart';
 import 'package:netflix/presentation/mainpage/widgets/Maintitletest.dart';
 import 'package:netflix/widgets/appbar_.dart';
@@ -12,6 +17,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<HomeBloc>().add(const HomeEvent.top10());
+      context.read<HomeBloc>().add(const HomeEvent.tvdramasevent());
+      context
+          .read<DownloadsBloc>()
+          .add(const DownloadsEvent.getdownloadsimage());
+      context.read<HotandnewBloc>().add(const HotandnewEvent.commingSoon());
+    });
     return SafeArea(
       child: ValueListenableBuilder(
           valueListenable: valueNotifier,
@@ -36,27 +49,41 @@ class HomePage extends StatelessWidget {
                         height: 30,
                       ),
                       const MainPagesetup(
-                        test: "TV -Dramas",
+                        test: "TV-Dramas",
                       ),
-                      const MainPagesetup(test: "Trending now"),
+                      const TrendingScreen(test: "Trending Now"),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const maintexttitle(test: "Top 10"),
                           LimitedBox(
                             maxHeight: 200,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: List.generate(
-                                  10,
-                                  (index) => Topten(
-                                        index: index,
-                                      )),
+                            child: BlocBuilder<HomeBloc, HomeState>(
+                              builder: (context, state) {
+                                if (state.isloading) {
+                                  return const Center(
+                                      child: CircularProgressIndicator());
+                                } else if (state.isError) {
+                                  return const Text("eroor");
+                                } else if (state.toptendatas.isEmpty) {
+                                  return const Text("Nodata");
+                                }
+                                return ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: List.generate(
+                                      (state.toptendatas.length),
+                                      (index) => Topten.tvdrama(
+                                            index: index,
+                                            posterpath: state
+                                                .toptendatas[index].posterpath,
+                                          )),
+                                );
+                              },
                             ),
                           )
                         ],
                       ),
-                      const MainPagesetup(test: "Top picks")
+                      const Toppicksscreen(test: "Top picks")
                     ],
                   ),
                   valueNotifier.value
@@ -116,9 +143,10 @@ class HomePage extends StatelessWidget {
 }
 
 class Movie_background_image extends StatelessWidget {
-  const Movie_background_image({
-    super.key,
-  });
+  final String posterpath;
+  const Movie_background_image({super.key, required this.posterpath});
+  const Movie_background_image.trendingnow(
+      {super.key, required this.posterpath});
 
   @override
   Widget build(BuildContext context) {
@@ -129,9 +157,8 @@ class Movie_background_image extends StatelessWidget {
         height: 200,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          image: const DecorationImage(
-            image: NetworkImage(
-                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg"),
+          image: DecorationImage(
+            image: NetworkImage("$imageurl$posterpath"),
           ),
         ),
       ),
@@ -141,6 +168,7 @@ class Movie_background_image extends StatelessWidget {
 
 class MainPagesetup extends StatelessWidget {
   const MainPagesetup({super.key, required this.test});
+
   final String test;
 
   @override
@@ -151,10 +179,30 @@ class MainPagesetup extends StatelessWidget {
         maintexttitle(test: test),
         LimitedBox(
           maxHeight: 200,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children:
-                List.generate(10, (index) => const Movie_background_image()),
+          child: BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              if (state.isloading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state.isError) {
+                return Center(
+                  child: Text("error"),
+                );
+              } else if (state.tvdramasdatas.isEmpty) {
+                return Center(
+                  child: Text("nodata"),
+                );
+              }
+              return ListView(
+                scrollDirection: Axis.horizontal,
+                children: List.generate(
+                    state.tvdramasdatas.length,
+                    (index) => Movie_background_image(
+                          posterpath: state.tvdramasdatas[index].posterpath,
+                        )),
+              );
+            },
           ),
         ),
       ],
@@ -163,8 +211,11 @@ class MainPagesetup extends StatelessWidget {
 }
 
 class Topten extends StatelessWidget {
-  const Topten({super.key, required this.index});
+  final String posterpath;
+  const Topten.tvdrama(
+      {super.key, required this.index, required this.posterpath});
   final int index;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -180,9 +231,8 @@ class Topten extends StatelessWidget {
               width: 150,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  image: const DecorationImage(
-                      image: NetworkImage(
-                          'https://www.themoviedb.org/t/p/w220_and_h330_face/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg'))),
+                  image: DecorationImage(
+                      image: NetworkImage('$imageurl$posterpath'))),
             ),
           ],
         ),
@@ -203,6 +253,92 @@ class Topten extends StatelessWidget {
             ),
           ),
         )
+      ],
+    );
+  }
+}
+
+class TrendingScreen extends StatelessWidget {
+  final String test;
+  const TrendingScreen({super.key, required this.test});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        maintexttitle(test: test),
+        LimitedBox(
+          maxHeight: 200,
+          child: BlocBuilder<DownloadsBloc, DownloadsState>(
+            builder: (context, state) {
+              if (state.isloading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state.isError) {
+                return Center(
+                  child: Text("error"),
+                );
+              } else if (state.downloads.isEmpty) {
+                return Center(
+                  child: Text("nodata"),
+                );
+              }
+              return ListView(
+                scrollDirection: Axis.horizontal,
+                children: List.generate(
+                    state.downloads.length,
+                    (index) => Movie_background_image(
+                          posterpath: state.downloads[index].posterPath!,
+                        )),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Toppicksscreen extends StatelessWidget {
+  final String test;
+  const Toppicksscreen({super.key, required this.test});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        maintexttitle(test: test),
+        LimitedBox(
+          maxHeight: 200,
+          child: BlocBuilder<HotandnewBloc, HotandnewState>(
+            builder: (context, state) {
+              if (state.isloading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state.isError) {
+                return Center(
+                  child: Text("error"),
+                );
+              } else if (state.commingsoon.isEmpty) {
+                return Center(
+                  child: Text("nodata"),
+                );
+              }
+              return ListView(
+                scrollDirection: Axis.horizontal,
+                children: List.generate(
+                    state.commingsoon.length,
+                    (index) => Movie_background_image(
+                          posterpath: state.commingsoon[index].posterpath,
+                        )),
+              );
+            },
+          ),
+        ),
       ],
     );
   }

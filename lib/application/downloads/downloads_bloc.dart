@@ -22,9 +22,11 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
       print(downloadoption.toString);
       emit(downloadoption.fold(
           (failure) => state.copyWith(
-              isloading: false, optionforfailureorsuccess: Some(Left(failure))),
+              isError: true,
+              isloading: false,
+              optionforfailureorsuccess: Some(Left(failure))),
           (success) => state.copyWith(
-              isloading: true,
+              isloading: false,
               downloads: success,
               optionforfailureorsuccess: Some(right(success)))));
     });
